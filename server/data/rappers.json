@@ -1,0 +1,44 @@
+[
+    {
+      "name": "Jay-Z",
+      "city": "Brooklyn, NY",
+      "yob": "1969",
+      "albums": "13"
+    },
+    {
+      "name": "Eminem",
+      "city": "Saint Joseph, MO",
+      "yob": "1972",
+      "albums": "9"
+    },
+    {
+      "name": "Diddy",
+      "city": "Harlem, NY",
+      "yob": "1969",
+      "albums": "5"
+    },
+    {
+      "name": "Tupac",
+      "city": "Harlem, NY",
+      "yob": "1971",
+      "albums": "5"
+    },
+    {
+      "name": "Ludacris",
+      "city": "Champaign, Il",
+      "yob": "1977",
+      "albums": "8"
+    },
+    {
+      "name": "Snoop Dogg",
+      "city": "Long Beach, CA",
+      "yob": "1971",
+      "albums": "16"
+    },
+    {
+      "name": "Nicki Minaj",
+      "city": "Saint James, Trinidad and Tabago",
+      "yob": "1982",
+      "albums": "4"
+    }
+  ]

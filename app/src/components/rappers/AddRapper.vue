@@ -11,7 +11,7 @@
 
       <label>
         City:
-        <input type="text" name="city" placeholder="City" required
+        <input type="text" name="city" placeholder="Birthplace" required
           v-model="rapper.city">
       </label>
 
@@ -23,7 +23,7 @@
 
       <label>
         Albums:
-        <input type="number" name="albums" placeholder="number" required 
+        <input type="number" name="albums" placeholder="Number of Albums" required 
           v-model="rapper.albums">
       </label>
       

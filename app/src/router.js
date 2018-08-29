@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Home from './components/home/Home.vue';
-import Rappers from './components/rappers/rappers.json';
+import Rappers from './components/rappers/Rappers.vue';
 
 export default new VueRouter({
   mode: 'history',

@@ -1,12 +1,18 @@
 const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-
 const app = express();
 
-app.use(express.json());
+const morgan = require('morgan');
 app.use(morgan('dev'));
+
+const cors = require('cors');
 app.use(cors());
+app.use(express.json());
+
+const pg = require('pg');
+const Client = pg.Client;
+const databaseUrl = 'postgres://localhost:5432/musicians';
+const client = new Client(databaseUrl);
+client.connect();
 
 const fs = require('fs');
 const dataPath = 'data/structures.json';
@@ -26,12 +32,25 @@ app.get('/api/structures', (req, res) => {
 });
 
 app.post('/api/structures', (req, res) => {
+  console.log('posting');
+  const body = req.body;
   const data = readData();
   data.push(req.body);
   fs.writeFileSync(dataPath, JSON.stringify(data));
 
+  client.query(`
+    INSERT INTO rappers (name, city, dob, albums)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *;
+  `,
+  [body.name, body.city, body.dob, body.albums]
+  )
+    .then(result => {
+      res.send(result.rows[0]);
+    })
+    .catch(err => console.log(err));
+
   res.send(req.body);
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log('app running...'));
+app.listen(3000, () => console.log('app running...'));

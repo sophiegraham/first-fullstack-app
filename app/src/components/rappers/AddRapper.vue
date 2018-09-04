@@ -2,6 +2,11 @@
 <template id="rapper-template">
   <section class="add-rapper">
     <h1>New Rapper</h1>
+  <!-- chamge name to Form, add below to a AddRapper file -->
+    <!-- <RapperForm
+      lable="Add"
+      :albums="albums"
+      :onEdit="handleAdd"/> -->
     <form @submit.prevent="handleSubmit">
       <label>
         Name:

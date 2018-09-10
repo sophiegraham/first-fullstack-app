@@ -1,14 +1,13 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgress://localhost:5432/musicians';
-const client = new Client(databaseUrl);
+// const pg = require('pg');
+// const Client = pg.Client;
+// const databaseUrl = 'postgress://localhost:5432/musicians';
+// const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-            DROP TABLE IF EXISTS rappers;
-        `);
-  })
+client.query(`
+    DROP TABLE IF EXISTS rapper;
+    DROP TABLE IF EXISTS musicians;
+`)
   .then(
     () => console.log('drop tables complete'),
     err => console.log(err)

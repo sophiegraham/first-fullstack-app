@@ -3,13 +3,17 @@
   <h2>Rappers</h2>
   <p v-if="!rappers">Loading rappers...</p>
   <ul v-else class="list">
-    <Rapper
-      v-for="(rapper, index) in rappers"
-      :key="index"
-      :rapper="rapper"
-    />
+    <li
+      v-for="rapper in rappers"
+      v-bind:key="rapper.id">
+      <router-link :to="`/rappers/${rapper.id}`">
+        {{rapper.name}} - {{rapper.musician}}
+      </router-link>
+    </li>
   </ul>
-  <AddRapper :on-add="handleAdd"/>
+  <p>
+    <router-link to="/rappers/add">Add a new rapper</router-link>
+  </p>
 </section>
 </template>
 
@@ -28,27 +32,19 @@ export default {
     api.getRappers()
       .then(rappers => {
         this.rappers = rappers;
-      });
-  },
-  components: { 
-    Rapper,
-    AddRapper
-  },
-  methods: {
-    handleAdd(rapper) {
-      return api.addRapper(rapper)
-        .then(saved => {
-          this.rappers.push(saved);
-        });
-    }
+       });
   }
 };
 </script>
 
-<style>
+<style scoped>
 ul.list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: initial;
 }
 </style>

@@ -1,21 +1,35 @@
 <template>
   <div id="app">
+    <header>
     <img alt="logo" src="./assets/logo.png">
     <HelloWorld msg="HELLOWORLDRappers"/>
     <nav>
         <router-link to="/">Home</router-link>
         <router-link to="/rappers">Rappers</router-link>
-      </nav>
+    </nav>
+    </header>
 
     <main>
-      <router-view></router-view>
+      <router-view :albums="albums"></router-view>
     </main>
   </div>
 </template>
 
 <script>
+import api from './services/api';
+
 export default {
-  
+  data(){
+    return{
+      albums: null
+    };
+  },
+  created() {
+    api.getAlbums()
+      .then(albums => {
+        this.albums = albums;
+      });
+  },
 };
 </script>
 
